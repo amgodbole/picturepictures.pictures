@@ -34,6 +34,7 @@
       $('#small').click(function(){
         $('.pic').css('width',"10%");
       })
+      $('#init_pic').hide();
 
     });
   </script>
@@ -76,8 +77,9 @@
     <button id='medium' type='button'>medium</button>
     <button id='small' type='button'>small</button>
   </div></center>
-  <div class="stash"></div>
-  <img src="test/test.jpg">
+  <div class="stash">
+    <img id='init_pic' class='pic' src="pictures/keepforever.jpg">
+  </div>
   <!-- <hr class="divider"> -->
   <p class="footer">Hello, I am picturepictures.pictures. <br>If you would like to inquire further information <br>you can find me at the corner of <br>main street and hello ave every night<br> at 10:30 smokin and lookin' good.</p>
 </body>
