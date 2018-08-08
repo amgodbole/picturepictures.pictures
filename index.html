@@ -37,7 +37,7 @@
       // ugly wasy of adding the images
       // for (i=1; i<total_num_of_images+1; i--)
       for(i=total_num_of_images+1; i--;) {
-        $(".stash").append( "<img class='pic' src='pictures/" + i +".jpg'>" );
+        $(".stash").append( "<img id='"+i+"' class='pic' src='pictures/" + i +".jpg'>" );
         console.log('success', i);
       }
 
@@ -52,6 +52,10 @@
         $('.pic').css('width',"10%");
       })
       $('#init_pic').hide();
+
+      $('img').click(function() {
+      	window.open('pictures/'+this.id+'.jpg');
+	  });
 
     });
   </script>
