@@ -1,28 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- INFOMORATION ___________________________________________________________________________ -->
+  <!-- INFOMORATION -->
   <title>picture pictures</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no" />
   <meta name="description" content="no description">
-  <!-- STYLESHEETS ____________________________________________________________________________ -->
-  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:100,100i,300,400,500'>
-  <link rel="stylesheet" type="text/css" href="css.css">
-  <!-- <link rel="stylesheet" type="text/css" href="bootstrap.min.css"> -->
-  <!-- JAVASCRIPTS ____________________________________________________________________________ -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script src="click.js"></script>
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      console.log( "ready... set.. IMAGES! " );
+      // add an img
+      var folder = "images/";
+      $.ajax({
+          url : folder,
+          success: function (data) {
+              $(data).find("a").attr("href", function (i, val) {
+                  if( val.match(/\.(jpe?g|png|gif)$/) ) {
+                      // img
+                      $(".stash").append( "<img class='pic' title='"+val+"' src='"+ folder + val +"'>" );
+                      console.log(val)
+                  } 
+              });
+          }
+      });
+      $('#big').click(function(){
+        $('.pic').css('width',"100%");
+      })
+      $('#medium').click(function(){
+        $('.pic').css('width',"30%");
+      })
+      $('#small').click(function(){
+        $('.pic').css('width',"10%");
+      })
+
+    });
+  </script>
+  <style type="text/css">
+    body{
+      margin: 20px;
+    }
+    button {
+      width: 400px;
+      /*height: 30px;*/
+    }
+    .pic {
+      width: 10%;
+      margin: 10px;
+    }
+    .text {
+      font-family: serif;
+      color: lightgray;
+      margin-bottom: 50px;
+    }
+    .stash {
+      width: 95%;
+      height: 100%;
+      margin: 0 auto;
+    }
+    .footer {
+      color: gray;
+      font-size: 6pt;
+      text-align: center;
+      line-height: 15px;
+    }
+    .divider {
+      margin: 50px 0 0 0;
+    }
+  </style>
 </head>
-
 <body>
-	<div>
-		<h2>testing</h2>
-	</div>
-
-	<!-- FOOTER _______________________________________________________________________________ -->
-	<p class="footer">FOOTER</p>
+  <center><div class="header">
+    <button id='big' type='button'>big</button>
+    <button id='medium' type='button'>medium</button>
+    <button id='small' type='button'>small</button>
+  </div></center>
+  <div class="stash"></div>
+  <!-- <hr class="divider"> -->
+  <p class="footer">Hello, I am picturepictures.pictures. <br>If you would like to inquire further information <br>you can find me at the corner of <br>main street and hello ave every night<br> at 10:30 smokin and lookin' good.</p>
 </body>
 </html>
