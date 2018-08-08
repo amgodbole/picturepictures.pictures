@@ -20,10 +20,13 @@
                   if( val.match(/\.(jpe?g|png|gif)$/) ) {
                       // img
                       $(".stash").append( "<img class='pic' title='"+val+"' src='"+ folder + val +"'>" );
-                      console.log(val)
+                      console.log('success', i, val);
                   } 
               });
-          }
+          },
+          error: function() {
+             console.log('error', i, val);
+         }
       });
       $('#big').click(function(){
         $('.pic').css('width',"100%");
